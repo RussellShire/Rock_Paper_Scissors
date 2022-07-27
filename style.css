@@ -1,32 +1,102 @@
 * {
-    margin: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: var(--lightest-color);
 }
 
-.control,
-.score {
-    display: inline-block;
-    padding: 1rem;
+:root {
+    --lightest-color: #BBE1C3;
+    --light-color: #a7cbdb;
+    --mid-color: #869d7a;
+    --dark-color: #91785D;
+    --darkest-color: #8B5D33;
+}
+
+.header-box {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-radius: 1rem;
+    background-color: var(--mid-color);
+}
+
+.header {
+    margin: auto;
+    background-color: inherit;
+}
+
+.controls {
+    display: flex;
+    justify-items: space-evenly;
+    background-color: white;
+    margin: 1rem;
+    border-radius: 0.3rem;
 }
 
 .control {
+    margin: auto;
     border: 2rem;
+    display: inline-flex;
+    padding: 1rem;
+    color: var(--dark-color);
+    background-color: inherit;
 }
+
+
 
 .control:active {
     opacity: 0.9;
     animation-name: clicked;
-    animation-duration: 0.5s;
+    animation-duration: 0.2s;
     animation-timing-function: ease-in;
 }
 
-.score-icons {
-    font-size: 1.2rem;
-    padding-bottom: 0rem;
+.selections {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+    color: var(--darkest-color)
 }
 
 .selection {
-    display: inline-block;
+    margin: auto;
     padding: 1rem;
+}
+
+.scores-header {
+    display: flex;
+    justify-content: center;
+}
+
+.scores-header-child {
+    margin: auto;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: var(--darkest-color);
+    font-weight: 600;
+}
+
+.score-icons {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    padding-top: 1rem;
+    background-color: var(--light-color);
+    border-radius: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.score {
+    margin: auto;
+    font-size: 2rem;
+    background-color: var(--light-color);
+    color: var(--dark-color);
 }
 
 .big-icon {
@@ -36,23 +106,39 @@
 }
 
 @keyframes clicked {
-    0% {font-size: 100%;}
-    50% {font-size: 50%;}
-    100% {font-size: 100%;}
+    0% {font-size: 100%}
+    50% {font-size: 80%}
+    100% {font-size: 100%}
 }
 
 @keyframes icon {
-    from {opacity: 80%;}
+    from {opacity: 50%;}
     to {opacity: 100%;}
 }
 
 #computer-score,
 #user-score {
-    font-size: 2.5rem;
+    font-size: 5rem;
 }
 
+#vs {
 
+    font-size: 3rem;
+}
+
+.output-box {
+    display: flex;
+    padding: 2rem;
+    background-color: var(--mid-color);
+    margin: 2rem;
+    border-radius: 1rem;
+}
 
 #output {
+    animation: clicked;
+    animation-duration: 0.2s;
+    margin: auto;
     font-size: 2rem;
+    background-color: inherit;
+    color: white;
 }
