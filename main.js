@@ -8,7 +8,7 @@ const model = {
  }
 
 const view = {
-    consoleLogMode: false, //For switching on and off debugging
+    consoleLogMode: true, //For switching on and off debugging
 
     //Selecting DOM elements
     selectRock: document.getElementById('rock-control'),
@@ -19,6 +19,9 @@ const view = {
     userSelection: document.getElementById('user-selection'),
     computerSelection: document.getElementById('computer-selection'),
     
+    rockIcon: '<i class="fa-solid fa-hand-back-fist"></i>',
+    paperIcon: '<i class="fa-solid fa-hand"></i>',
+    scissorsIcon: '<i class="fa-solid fa-hand-scissors fa-rotate-90"></i>',
        
     //QUESTION FOR GRAHAM: Why can't I use this.selectRock below???
     /*userSelection: document.getElementById('rock-control').addEventListener('click', () => { 
@@ -36,28 +39,28 @@ const view = {
         this.consoleLogMode? console.log('computerIcon fired') : '';
         switch (selection) {
             case 'rock':
-                selector.innerHTML = '<i class="fa-solid fa-hand-back-fist fa-10x"></i>';
+                selector.innerHTML = this.rockIcon;
                 break;
             case 'paper':
-                selector.innerHTML = '<i class="fa-solid fa-hand fa-10x"></i>';
+                selector.innerHTML = this.paperIcon;
                 break;
             case 'scissors':
-                selector.innerHTML = '<i class="fa-solid fa-hand-scissors fa-rotate-90 fa-10x"></i>';
+                selector.innerHTML = this.scissorsIcon;
                 break;
         }
     },
-    //Changes the icon according to the user's selection
+    //Changes the icon according to t8 user's selection
     userIcon: function(selection,selector = this.userSelection){
         this.consoleLogMode? console.log('computerIcon fired') : '';
         switch (selection) {
             case 'rock':
-                selector.innerHTML = '<i class="fa-solid fa-hand-back-fist fa-10x"></i>';
+                selector.innerHTML = this.rockIcon;
                 break;
             case 'paper':
-                selector.innerHTML = '<i class="fa-solid fa-hand fa-10x"></i>';
+                selector.innerHTML = this.paperIcon;
                 break;
             case 'scissors':
-                selector.innerHTML = '<i class="fa-solid fa-hand-scissors fa-rotate-90 fa-10x"></i>';
+                selector.innerHTML = this.scissorsIcon;
                 break;
         }
     },
@@ -87,12 +90,30 @@ const controller = {
         }
     },
 
+    scoring: (currentWinner) => {
+        switch (currentWinner) {
+            case 'You win!':
+                model.userWins ++;
+                view.consoleLogMode? console.log(model.userWins) : '';
+                break;
+            case 'Computer wins':
+                model.computerWins ++;
+                view.consoleLogMode? console.log(model.computerWins) : '';
+                break;
+            case 'Draw!':
+                model.draws ++;
+                view.consoleLogMode? console.log(model.draws) : '';
+                break;
+        }
+    },
+
     playGame: () => {
         const userChoice = model.userInput;
         const computerChoice = controller.getComputerChoice();
         view.consoleLogMode? console.log(`You chose ${userChoice}`) : '';
         view.consoleLogMode? console.log(`The computer chose ${computerChoice}`) : '';
         controller.determineWinner(userChoice, computerChoice)
+        controller.scoring(model.currentWinner)
         view.render(model.userInput, model.computerChoice, model.currentWinner)
         
     },
