@@ -8,30 +8,33 @@ const model = {
  }
 
 const view = {
-    consoleLogMode: true, //For switching on and off debugging
+    consoleLogMode: false, //For switching on and off debugging
 
     //Selecting DOM elements
     selectRock: document.getElementById('rock-control'),
     selectPaper: document.getElementById('paper-control'),
     selectScissors: document.getElementById('scissors-control'),
     output: document.getElementById('output'),
-    
     userSelection: document.getElementById('user-selection'),
     computerSelection: document.getElementById('computer-selection'),
-    
-    rockIcon: '<i class="fa-solid fa-hand-back-fist"></i>',
-    paperIcon: '<i class="fa-solid fa-hand"></i>',
-    scissorsIcon: '<i class="fa-solid fa-hand-scissors fa-rotate-90"></i>',
+    userScore: document.getElementById('user-score'),
+    computerScore: document.getElementById('computer-score'),
+
+    rockIcon: '<i class="fa-solid fa-hand-back-fist big-icon"></i>',
+    paperIcon: '<i class="fa-solid fa-hand big-icon"></i>',
+    scissorsIcon: '<i class="fa-solid fa-hand-scissors fa-rotate-90 big-icon"></i>',
        
     //QUESTION FOR GRAHAM: Why can't I use this.selectRock below???
     /*userSelection: document.getElementById('rock-control').addEventListener('click', () => { 
        console.log('view rock select')}),*/
     
     //Renders result and icons to the Window
-    render: (userInput, computerChoice, currentWinner) => {
+    render: (userInput, computerChoice, currentWinner, userScore, computerScore) => {
         output.innerText = currentWinner;
         view.computerIcon(computerChoice)
         view.userIcon(userInput)
+        view.userScore.innerText = userScore
+        view.computerScore.innerText = computerScore
     },
 
     //Changes the icon according to the computer's selection
@@ -114,7 +117,7 @@ const controller = {
         view.consoleLogMode? console.log(`The computer chose ${computerChoice}`) : '';
         controller.determineWinner(userChoice, computerChoice)
         controller.scoring(model.currentWinner)
-        view.render(model.userInput, model.computerChoice, model.currentWinner)
+        view.render(model.userInput, model.computerChoice, model.currentWinner, model.userWins, model.computerWins)
         
     },
 }
