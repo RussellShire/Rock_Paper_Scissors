@@ -5,6 +5,13 @@ const model = {
     computerWins: 0,
     draws: 0,
     currentWinner: '',
+    reset: () => {
+        model.userInput = '';
+        model.computerChoice = '';    
+        model.userWins = 0;
+        model.computerWins = 0;
+        model.currentWinner = 'Make your move';
+    },
  }
 
 const view = {
@@ -19,6 +26,7 @@ const view = {
     computerSelection: document.getElementById('computer-selection'),
     userScore: document.getElementById('user-score'),
     computerScore: document.getElementById('computer-score'),
+    resetButton: document.getElementById('reset-button'),
 
     rockIcon: '<i class="fa-solid fa-hand-back-fist big-icon"></i>',
     paperIcon: '<i class="fa-solid fa-hand big-icon"></i>',
@@ -54,7 +62,7 @@ const view = {
     },
     //Changes the icon according to t8 user's selection
     userIcon: function(selection,selector = this.userSelection){
-        this.consoleLogMode? console.log('computerIcon fired') : '';
+        this.consoleLogMode? console.log('userIcon fired') : '';
         switch (selection) {
             case 'rock':
                 selector.innerHTML = this.rockIcon;
@@ -109,6 +117,11 @@ const controller = {
                 break;
         }
     },
+    
+    resetView: () => {
+        model.reset()
+        view.render(model.userInput, model.computerChoice, model.currentWinner, model.userWins, model.computerWins)    
+    },
 
     playGame: () => {
         const userChoice = model.userInput;
@@ -138,4 +151,8 @@ view.selectPaper.onclick = e => {
 view.selectScissors.onclick = e => {
     model.userInput = 'scissors'
     controller.playGame();
+}
+
+view.resetButton.onclick = () => {
+    controller.resetView();
 }
