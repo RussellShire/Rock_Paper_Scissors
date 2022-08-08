@@ -19,7 +19,6 @@
     margin: auto;
 }
 
-
 .header-box {
     display: flex;
     font-size: 1.5rem;
@@ -66,8 +65,10 @@
 
 .selections {
     display: flex;
-    align-items: center;
-    padding-top: 1rem;
+    flex-direction: row;
+    justify-items: space-evenly;
+    padding: 1rem;
+    margin: auto;
     color: var(--darkest-color)
 }
 
@@ -134,7 +135,7 @@
     display: flex;
     padding: 2rem;
     background-color: var(--mid-color);
-    margin: 2rem;
+    margin: 1rem;
     border-radius: 1rem;
 }
 
