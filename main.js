@@ -135,8 +135,6 @@ const controller = {
     },
 }
 
-//QUESTION FOR GRAHAM: Event listeners should be in View right? I've been struggling to add them
-
   //event listener
 view.selectRock.onclick = e => {
     model.userInput = 'rock'

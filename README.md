@@ -1,16 +1,23 @@
-# Rock_Paper_Scissors
-Another classic JavaScript portfolio piece. Some twists planned for down the line.
+# ROCK PAPER SCISSORS
 
-I wanted to experiment with MVC architecture so took a simple Rock, Paper, Scissors project and converted it.
+A classic JavaScript portfolio piece. Vanilla JS following MVC architecture.
 
-The model is a little thin in this example as some of the functionality from the controller needs pulling into the model. Similarly there are event listeners outside of the View. This is because I should have built the view as a class rather than an object.
+<!-- # Hosted
+ -->
+
+# Optional To Do
+
+- The model is a little thin in this example as some of the functionality from the controller needs pulling into the model.
+- Event listeners are outside of the View. This is because I should have built the view as a class rather than an object.
+
+# Specification
 
 The view takes all the Dom elements and renders inputs to the appropriate area. I've leaned heavily on icons from Fontawesome to quickly intergrate graphics for both the user inputs and the representation of the current match.
 
 How a game works:
 The user selects one of the icons. Event listeners assign the user's choice to the model and fire the playGame function in the controller.
 playGame is the engine that communicates between the model and the view.
-First it gets the user's choice from the model. 
+First it gets the user's choice from the model.
 Then it invokes getComputerChoice, which randomly selects Rock, Paper or Scissors - this is also assigned to the model within this function.
 You'll also see a consoleLogMode ternary here, this is a slightly idiosyncratic debugging method I was experimenting with.
 
@@ -23,5 +30,8 @@ Within the view render() assigns the correct icons to the correct location in th
 
 render() also updates the scores that appear in the window.
 
-There is a reset button that uses a method in the model to set everything back to default and then invokes render() to wipe the screen. This is slightly crude bu works and is easy to read.
+There is a reset button that uses a method in the model to set everything back to default and then invokes render() to wipe the screen. This is slightly crude but works and is easy to read.
 
+# Usage
+
+Tested and working November 2022
