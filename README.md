@@ -2,8 +2,9 @@
 
 A classic JavaScript portfolio piece. Vanilla JS following MVC architecture.
 
-<!-- # Hosted
- -->
+# Hosted
+
+https://russellshire.github.io/Rock_Paper_Scissors/
 
 # Optional To Do
 
